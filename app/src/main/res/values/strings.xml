@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LearnJSONStunting</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="judul_stunting">Judul Stunting</string>
+    <string name="jenis_stunting">Jenis Stunting</string>
+    <string name="ivbackdrop">ivBackDrop</string>
+</resources>
