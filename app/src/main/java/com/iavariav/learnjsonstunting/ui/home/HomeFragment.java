@@ -11,24 +11,29 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.iavariav.learnjsonstunting.R;
+import com.iavariav.learnjsonstunting.adapter.StuntingAdapter;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+    private StuntingAdapter stuntingAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
+        RecyclerView recyclerView = root.findViewById(R.id.rv);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setHasFixedSize(true);
+
+        homeViewModel.getStunding().observe(getActivity(), stuntingModels -> {
+            stuntingAdapter = new StuntingAdapter(getActivity(), stuntingModels);
+            recyclerView.setAdapter(stuntingAdapter);
         });
         return root;
     }

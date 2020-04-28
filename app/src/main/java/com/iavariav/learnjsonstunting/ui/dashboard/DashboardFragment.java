@@ -31,8 +31,7 @@ public class DashboardFragment extends Fragment {
 //        RecyclerView recyclerView = findViewById(R.id.apaaa); // berguna di activity
         final RecyclerView recyclerView = root.findViewById(R.id.rv);
 
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
 
         dashboardViewModel.getStunding().observe(getActivity(), stuntingModel -> {
